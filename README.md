@@ -1,0 +1,2 @@
+# laravelblog-cwc
+Sample blog
