@@ -37,13 +37,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function article()
+    public function articles()
     {
-        return $this->hasMany(Article::class);
+        return $this->hasMany(Article::class, 'update_user_id');
     }
 
     public function article_category()
     {
-        return $this->belongsTo(ArticleCategory::class);
+        return $this->hasMany(ArticleCategory::class, 'article_category_id');
     }
 }
