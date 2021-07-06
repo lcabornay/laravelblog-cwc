@@ -16,7 +16,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username',
+        'first_name',
+        'last_name',
+        'role',
+        'password',
     ];
 
     /**
@@ -46,4 +50,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(ArticleCategory::class, 'article_category_id');
     }
+
 }
