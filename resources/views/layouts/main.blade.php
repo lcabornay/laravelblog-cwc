@@ -37,9 +37,21 @@
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{ route('users.index') }}" class="nav-link">Home</a>
-            </li>
+            @guest
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('users.index') }}" class="nav-link">Home</a>
+                </li>
+            @else
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('users.index') }}" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('users.show', Auth::user()) }}" class="nav-link">Profile</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('logout') }}" class="nav-link">Logout</a>
+                </li>
+            @endguest
         </ul>
     </nav>
     <!-- /.navbar -->
@@ -61,7 +73,8 @@
                     <img src="{{ asset('adminlte/dist/img/user1-128x128.jpg') }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    {{--<a href="#" class="d-block">{{ $user->first_name . ' ' . $user->last_name }}</a>--}}
+                    <a href="{{ route('users.show', Auth::user()) }}" class="d-block">{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</a>
+
                 </div>
             </div>
 
@@ -70,11 +83,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon far fa-user"></i><p> Profile </p>
-                        </a>
-                    </li>
+                    @if (Auth::user()->role == 1)
                     <li class="nav-item">
                         <a href="{{ route('users.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-user"></i><p> Users </p>
@@ -103,6 +112,13 @@
                             </li>
                         </ul>
                     </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="{{ route('articles.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i><p> Articles </p>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

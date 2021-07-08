@@ -47,3 +47,8 @@ Route::get('/article/categories/{category}', 'ArticleCategoriesController@show')
 // Create new article
 Route::get('/article/categories/create', 'ArticleCategoriesController@create')->name('article_categories.create');
 Route::post('/article/categories', 'ArticleCategoriesController@store')->name('article_categories.store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');

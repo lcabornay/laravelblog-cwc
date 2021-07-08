@@ -35,6 +35,7 @@
                                 <th>Username</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>Actions</th>
                             </thead>
                             <tbody>
                                 @foreach($users as $user)
@@ -47,6 +48,23 @@
                                     <td>{{ $user->username }}</td>
                                     <td> {{$user->email}} </td>
                                     <td> {{ $user->role == 0 ? 'User': 'Admin' }} </td>
+                                    <td class="project-actions text-center">
+                                        <a class="btn btn-primary btn-sm" href="{{ route('users.show', $user) }}">
+                                            <i class="fas fa-folder">
+                                            </i>
+                                            View
+                                        </a>
+                                        <a class="btn btn-info btn-sm" href="{{ route('users.edit', $user) }}">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>
+                                            Edit
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="{{ route('users.edit', $user) }}">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Delete
+                                        </a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -55,6 +73,7 @@
                                 <th>Username</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>Actions</th>
                             </tfoot>
                         </table>
                     </div>
