@@ -71,13 +71,13 @@
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="{{ route('users.index') }}" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i><p> Dashboard </p>
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-user"></i><p> Profile </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon far fa-user"></i><p> Profile </p>
+                        <a href="{{ route('users.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i><p> Users </p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview menu-open">
@@ -90,13 +90,13 @@
                         </a>
                         <ul class="nav nav-treeview" style="display: block;">
                             <li class="nav-item">
-                                <a href="pages/examples/invoice.html" class="nav-link">
+                                <a href="{{ route('articles.index') }}" class="nav-link">
                                     <i class="far fa-edit nav-icon"></i>
                                     <p>List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/examples/profile.html" class="nav-link">
+                                <a href="{{ route('article_categories.index') }}" class="nav-link">
                                     <i class="far fa-edit nav-icon"></i>
                                     <p>Category</p>
                                 </a>
@@ -181,6 +181,15 @@
 <script>
     $(function () {
         $('#userDataTable').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+        });
+
+        $('#articleDataTable').DataTable({
             "paging": true,
             "lengthChange": true,
             "searching": true,

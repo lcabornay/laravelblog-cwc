@@ -30,11 +30,20 @@ Route::put('/users/{user}', 'UsersController@update')->name('users.update');
 
 // Articles
 // List all articles
-Route::get('/articles', 'ArticleController@index')->name('articles.index');
-Route::get('/articles/{article}', 'ArticleController@show')->name('articles.show');
+Route::get('/articles', 'ArticlesController@index')->name('articles.index');
+Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show');
 // Create new article
-Route::get('/articles/create', 'ArticleController@create')->name('articles.create');
-Route::post('/articles', 'ArticleController@store')->name('articles.store');
+Route::get('/articles/create', 'ArticlesController@create')->name('articles.create');
+Route::post('/articles', 'ArticlesController@store')->name('articles.store');
 // Update article
-Route::get('/articles/{article}/edit', 'ArticleController@edit')->name('articles.edit');
-Route::put('/articles/{article}', 'ArticleController@update')->name('articles.update');
+Route::get('/articles/{article}/edit', 'ArticlesController@edit')->name('articles.edit');
+Route::put('/articles/{article}', 'ArticlesController@update')->name('articles.update');
+
+// ArticleCategories
+// List all ArticleCategories
+Route::get('/article/categories', 'ArticleCategoriesController@index')->name('article_categories.index');
+Route::get('/article/categories/{category}', 'ArticleCategoriesController@show')->name('article_categories.show');
+
+// Create new article
+Route::get('/article/categories/create', 'ArticleCategoriesController@create')->name('article_categories.create');
+Route::post('/article/categories', 'ArticleCategoriesController@store')->name('article_categories.store');

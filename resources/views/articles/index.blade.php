@@ -4,12 +4,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Users List</h1>
+                    <h1 class="m-0 text-dark">Articles </h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Users</li>
+                        <li class="breadcrumb-item active">Articles</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,37 +24,35 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row fa-pull-right">
-                            <a href=" {{ route('users.create') }}" class="btn btn-primary">Create User</a>
+                            <a href=" {{ route('articles.create') }}" class="btn btn-primary">Create Article</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="userDataTable" class="table table-bordered table-hover">
+                        <table id="articleDataTable" class="table table-bordered table-hover">
                             <thead>
-                                <th>Name</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Role</th>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Slug</th>
+                                <th>Category</th>
                             </thead>
                             <tbody>
-                                @foreach($users as $user)
+                            @foreach($articles as $article)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('users.edit', $user->id) }}">
-                                        {{ $user->first_name . ' ' . $user->last_name }}
-                                        </a>
+                                        <a href="{{ asset('storage/images') . '/' . $article->image_path }}"><img src="{{ asset('storage/images') . '/' . $article->image_path }}" width="50px" height="50px">&nbsp;</a>
                                     </td>
-                                    <td>{{ $user->username }}</td>
-                                    <td> {{$user->email}} </td>
-                                    <td> {{ $user->role == 0 ? 'User': 'Admin' }} </td>
+                                    <td><a href="{{ route('articles.show', $article) }}">{{ $article->title }} </a></td>
+                                    <td> {{$article->slug}} </td>
+                                    <td> {{ $article->article_category->name }} </td>
                                 </tr>
-                                @endforeach
+                            @endforeach
                             </tbody>
                             <tfoot>
-                                <th>Name</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Role</th>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Slug</th>
+                                <th>Category</th>
                             </tfoot>
                         </table>
                     </div>

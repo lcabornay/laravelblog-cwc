@@ -15,6 +15,7 @@ class Article extends Model
         'title',
         'slug',
         'contents',
+        'article_category_id',
         'update_user_id',
     ];
 
