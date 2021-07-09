@@ -26,7 +26,7 @@ class ArticleCategoriesController extends Controller
     {
         $articleCategories = ArticleCategory::latest()->get();
 
-        return view('article_categories.index', compact('articleCategories'));
+        return view('article_categories.index', ['articleCategories' => $articleCategories]);
     }
 
     /**
@@ -36,18 +36,22 @@ class ArticleCategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('article_categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        ArticleCategory::create(request()->validate([
+            'name' => 'required',
+            'update_user_id' => 'required',
+        ]));
+
+        return redirect(route('article_categories.index'));
     }
 
     /**
@@ -69,19 +73,25 @@ class ArticleCategoriesController extends Controller
      */
     public function edit(ArticleCategory $articleCategory)
     {
-        //
+        return view('article_categories.edit', compact('articleCategory'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  \App\ArticleCategory  $articleCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ArticleCategory $articleCategory)
+    public function update(ArticleCategory $articleCategory)
     {
-        //
+        $articleCategoryAttr = request()->validate([
+            'name' => 'required',
+            'update_user_id' => 'required',
+        ]);
+
+        $articleCategory->update($articleCategoryAttr);
+
+        return redirect(route('article_categories.index'));
     }
 
     /**
@@ -89,9 +99,16 @@ class ArticleCategoriesController extends Controller
      *
      * @param  \App\ArticleCategory  $articleCategory
      * @return \Illuminate\Http\Response
+     *
+     * @throws
      */
     public function destroy(ArticleCategory $articleCategory)
     {
-        //
+        $articleCategory->delete();
+
+        return response()->json([
+            'success' => 'Record deleted successfully!',
+            'url' => route('article_categories.index'),
+        ]);
     }
 }

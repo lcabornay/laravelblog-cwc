@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\ArticleCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticlesController extends Controller
 {
@@ -24,7 +26,11 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = Article::latest()->get();
+        if (Auth::user()->role == 0){
+            $articles = Article::with('user')->where('update_user_id', Auth::id())->get();
+        }else {
+            $articles = Article::all();
+        }
 
         return view('articles.index', [ 'articles' => $articles]);
     }
@@ -36,7 +42,9 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        //
+        $articleCategories = ArticleCategory::all();
+
+        return view('articles.create', compact('articleCategories'));
     }
 
     /**
@@ -47,7 +55,9 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Article::create($this->validateArticle());
+
+        return redirect(route('articles.index'));
     }
 
     /**
@@ -69,7 +79,12 @@ class ArticlesController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+
+        $articleCategories = ArticleCategory::all();
+        return view('articles.edit', [
+            'article' => $article,
+            'articleCategories' => $articleCategories,
+        ]);
     }
 
     /**
@@ -81,7 +96,9 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $article->update($this->validateArticle());
+
+        return redirect(route('articles.index'));
     }
 
     /**
@@ -89,9 +106,28 @@ class ArticlesController extends Controller
      *
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
+     *
+     * @throws
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        return response()->json([
+            'success' => 'Record deleted successfully!',
+            'url' => route('articles.index'),
+        ]);
+    }
+
+    public function validateArticle()
+    {
+        return request()->validate([
+            'title' => 'required',
+            'slug' => 'required',
+            'contents' => 'required',
+            'article_category_id' => 'required',
+            'update_user_id' => 'required',
+            'image_path' => 'required',
+        ]);
     }
 }

@@ -194,6 +194,7 @@
 <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }} "></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
+<script src="https://cdn.ckeditor.com/4.16.1/standard-all/ckeditor.js"></script>
 <script>
     $(function () {
         $('#userDataTable').DataTable({
@@ -277,6 +278,88 @@
                 return false;
             }
         });
+
+        $('.delete-article-category').click(function () {
+            console.log($(this).data("id"));
+            if(confirm("Are you sure you want to delete this?")){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                    }
+                });
+                let id = $(this).data("id");
+                let token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "/article/categories/"+id,
+                    type: 'DELETE',
+                    dataType: "JSON",
+                    data: {
+                        "id": id,
+                        "_token": token
+                    },
+                    success: function (data)
+                    {
+                        window.location.href = data.url;
+                        console.log(data.success);
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            }else{
+                return false;
+            }
+        });
+
+        $('.delete-article-btn').click(function () {
+            console.log($(this).data("id"));
+            if(confirm("Are you sure you want to delete this?")){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                    }
+                });
+                let id = $(this).data("id");
+                let token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "/articles/"+id,
+                    type: 'DELETE',
+                    dataType: "JSON",
+                    data: {
+                        "id": id,
+                        "_token": token
+                    },
+                    success: function (data)
+                    {
+                        window.location.href = data.url;
+                        console.log(data.success);
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            }else{
+                return false;
+            }
+        });
+
+        CKEDITOR.replace('editor1', {
+            uiColor: '#CCEAEE',
+            filebrowserImage2UploadUrl: " {{ asset('storage/images') }}",
+            filebrowserImage2BrowseUrl: " {{ asset('storage/images') }}",
+        });
+
+        // let editor = CKEDITOR.replace( 'editor1' );
+        // CKFinder.setupCKEditor( editor, {
+        //     skin: 'jquery-mobile',
+        //     swatch: 'b',
+        //     onInit: function( finder ) {
+        //         finder.on( 'files:choose', function( evt ) {
+        //             var file = evt.data.files.first();
+        //             console.log( 'Selected: ' + file.get( 'name' ) );
+        //         } );
+        //     }
+        // } );
     });
 </script>
 </body>

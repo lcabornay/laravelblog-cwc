@@ -17,6 +17,7 @@ class Article extends Model
         'contents',
         'article_category_id',
         'update_user_id',
+        'image_path',
     ];
 
     protected $dates = ['deleted_at'];

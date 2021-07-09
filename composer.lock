@@ -4,8 +4,50 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a6ad39741347f7ba1700b0a5bdc6b53",
+    "content-hash": "1d4497e82a1c0961634e1d0881a27079",
     "packages": [
+        {
+            "name": "ckeditor/ckeditor",
+            "version": "4.16.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ckeditor/ckeditor4-releases.git",
+                "reference": "814c5891714b9de2aaf0d44ca4a5538e9596275c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ckeditor/ckeditor4-releases/zipball/814c5891714b9de2aaf0d44ca4a5538e9596275c",
+                "reference": "814c5891714b9de2aaf0d44ca4a5538e9596275c",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+",
+                "LGPL-2.1+",
+                "MPL-1.1+"
+            ],
+            "authors": [
+                {
+                    "name": "CKSource",
+                    "homepage": "https://cksource.com"
+                }
+            ],
+            "description": "JavaScript WYSIWYG web text editor.",
+            "homepage": "https://ckeditor.com/ckeditor-4/",
+            "keywords": [
+                "CKEditor",
+                "ckeditor4",
+                "editor",
+                "fckeditor",
+                "html",
+                "javascript",
+                "richtext",
+                "text",
+                "wysiwyg"
+            ],
+            "time": "2021-05-20T12:10:08+00:00"
+        },
         {
             "name": "doctrine/inflector",
             "version": "2.0.3",
@@ -313,16 +355,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v6.20.29",
+            "version": "v6.20.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "00fa9c04aed10d68481f5757b89da0e6798f53b3"
+                "reference": "a6402599a517b2f15f4ada6b3b20df33a5895e1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/00fa9c04aed10d68481f5757b89da0e6798f53b3",
-                "reference": "00fa9c04aed10d68481f5757b89da0e6798f53b3",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a6402599a517b2f15f4ada6b3b20df33a5895e1e",
+                "reference": "a6402599a517b2f15f4ada6b3b20df33a5895e1e",
                 "shasum": ""
             },
             "require": {
@@ -458,7 +500,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2021-06-22T13:41:06+00:00"
+            "time": "2021-07-06T14:06:00+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -721,16 +763,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "2.2.0",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "1cb1cde8e8dd0f70cc0fe51354a59acad9302084"
+                "reference": "df991fd88693ab703aa403413d83e15f688dae33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1cb1cde8e8dd0f70cc0fe51354a59acad9302084",
-                "reference": "1cb1cde8e8dd0f70cc0fe51354a59acad9302084",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/df991fd88693ab703aa403413d83e15f688dae33",
+                "reference": "df991fd88693ab703aa403413d83e15f688dae33",
                 "shasum": ""
             },
             "require": {
@@ -749,7 +791,7 @@
                 "php-amqplib/php-amqplib": "~2.4",
                 "php-console/php-console": "^3.1.3",
                 "phpspec/prophecy": "^1.6.1",
-                "phpstan/phpstan": "^0.12.59",
+                "phpstan/phpstan": "^0.12.91",
                 "phpunit/phpunit": "^8.5",
                 "predis/predis": "^1.1",
                 "rollbar/rollbar": "^1.3",
@@ -799,7 +841,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2020-12-14T13:15:25+00:00"
+            "time": "2021-07-05T11:34:13+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -3396,16 +3438,16 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.14.1",
+            "version": "v1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1"
+                "reference": "89c6201c74db25fa759ff16e78a4d8f32547770e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1",
-                "reference": "ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/89c6201c74db25fa759ff16e78a4d8f32547770e",
+                "reference": "89c6201c74db25fa759ff16e78a4d8f32547770e",
                 "shasum": ""
             },
             "require": {
@@ -3453,7 +3495,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2021-03-30T06:27:33+00:00"
+            "time": "2021-07-06T20:39:40+00:00"
         },
         {
             "name": "filp/whoops",
@@ -4556,16 +4598,16 @@
         },
         {
             "name": "scrivo/highlight.php",
-            "version": "v9.18.1.6",
+            "version": "v9.18.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/scrivo/highlight.php.git",
-                "reference": "44a3d4136edb5ad8551590bf90f437db80b2d466"
+                "reference": "05996fcc61e97978d76ca7d1ac14b65e7cd26f91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/scrivo/highlight.php/zipball/44a3d4136edb5ad8551590bf90f437db80b2d466",
-                "reference": "44a3d4136edb5ad8551590bf90f437db80b2d466",
+                "url": "https://api.github.com/repos/scrivo/highlight.php/zipball/05996fcc61e97978d76ca7d1ac14b65e7cd26f91",
+                "reference": "05996fcc61e97978d76ca7d1ac14b65e7cd26f91",
                 "shasum": ""
             },
             "require": {
@@ -4618,7 +4660,7 @@
                 "highlight.php",
                 "syntax"
             ],
-            "time": "2020-12-22T19:20:29+00:00"
+            "time": "2021-07-09T00:30:39+00:00"
         },
         {
             "name": "sebastian/cli-parser",
