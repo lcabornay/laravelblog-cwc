@@ -16,8 +16,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username',
+        'first_name',
+        'last_name',
+        'email',
+        'role',
+        'password',
     ];
+
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -46,4 +53,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(ArticleCategory::class, 'article_category_id');
     }
+
 }
