@@ -19,6 +19,7 @@ class Article extends Model
         'update_user_id',
     ];
 
+    protected $dates = ['deleted_at'];
 
     public function user()
     {

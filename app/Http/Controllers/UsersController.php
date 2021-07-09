@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -45,7 +46,9 @@ class UsersController extends Controller
      */
     public function store()
     {
-        User::create($this->validateUser());
+        $userData = $this->validateUser();
+        $userData['password'] = Hash::make($userData['password']);
+        User::create($userData);
 
         return redirect(route('users.index'));
     }
@@ -80,7 +83,9 @@ class UsersController extends Controller
      */
     public function update(User $user)
     {
-        $user->update($this->validateUser());
+        $userData = $this->validateUser();
+        $userData['password'] = Hash::make($userData['password']);
+        $user->update($userData);
 
         return redirect(route('users.show', $user));
     }
@@ -90,10 +95,17 @@ class UsersController extends Controller
      *
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
+     *
+     * @throws
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return response()->json([
+            'success' => 'Record deleted successfully!',
+            'url' => route('users.index'),
+        ]);
     }
 
     protected function validateUser()

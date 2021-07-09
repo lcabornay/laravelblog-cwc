@@ -23,6 +23,7 @@ Route::get('/users/create', 'UsersController@create')->name('users.create');
 Route::post('/users', 'UsersController@store')->name('users.store');
 // Show individual user
 Route::get('/users/{user}', 'UsersController@show')->name('users.show');
+Route::delete('/users/{user}', 'UsersController@destroy')->name('users.destroy');
 
 // Update user
 Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit');

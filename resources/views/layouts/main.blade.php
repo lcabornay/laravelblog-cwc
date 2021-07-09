@@ -89,7 +89,7 @@
                             <i class="nav-icon fas fa-user"></i><p> Users </p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview menu-open">
+                    <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
@@ -97,7 +97,7 @@
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview" style="display: block;">
+                        <ul class="nav nav-treeview" style="display: none;">
                             <li class="nav-item">
                                 <a href="{{ route('articles.index') }}" class="nav-link">
                                     <i class="far fa-edit nav-icon"></i>
@@ -212,6 +212,70 @@
             "ordering": true,
             "info": true,
             "autoWidth": false,
+        });
+
+        $('#deleteUserButton').click(function () {
+            if(confirm("Are you sure you want to delete this?")){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                    }
+                });
+                let id = $('#delete_user_id').val();
+                let token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "/users/"+id,
+                    type: 'DELETE',
+                    dataType: "JSON",
+                    data: {
+                        "id": id,
+                        "_token": token
+                    },
+                    success: function (data)
+                    {
+                        window.location.href = data.url;
+                        console.log(data.success);
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            }else{
+                return false;
+            }
+
+        });
+
+        $('.delete-user-index').click(function () {
+            console.log($(this).data("id"));
+            if(confirm("Are you sure you want to delete this?")){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                    }
+                });
+                let id = $(this).data("id");
+                let token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "/users/"+id,
+                    type: 'DELETE',
+                    dataType: "JSON",
+                    data: {
+                        "id": id,
+                        "_token": token
+                    },
+                    success: function (data)
+                    {
+                        window.location.href = data.url;
+                        console.log(data.success);
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            }else{
+                return false;
+            }
         });
     });
 </script>

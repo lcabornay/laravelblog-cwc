@@ -29,6 +29,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+                        @csrf
                         <table id="userDataTable" class="table table-bordered table-hover">
                             <thead>
                                 <th>Name</th>
@@ -59,11 +60,11 @@
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" href="{{ route('users.edit', $user) }}">
+                                        <button data-id="{{ $user->id }}" class="btn btn-danger btn-sm delete-user-index" href="#">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
-                                        </a>
+                                        </button>
                                     </td>
                                 </tr>
                                 @endforeach

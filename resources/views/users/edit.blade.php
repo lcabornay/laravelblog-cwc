@@ -68,7 +68,8 @@
                                 <button type="Submit" class="form-control btn btn-primary"> Submit </button>
                             </div>
                             <div class="col-sm-6">
-                                <button type="button" class="form-control btn btn-danger">Delete</button>
+                                <button type="button" id="deleteUserButton" class="form-control btn btn-danger">Delete</button>
+                                <input type="hidden" id="delete_user_id" value="{{ $user->id }}" />
                             </div>
                         </div>
                     </div>

@@ -12,6 +12,8 @@ class ArticleCategory extends Model
         'update_user_id',
     ];
 
+    protected $dates = ['deleted_at'];
+
     public function user()
     {
         return $this->belongsTo(User::class, 'update_user_id');
